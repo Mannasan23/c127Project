@@ -12,12 +12,12 @@ def scrape():
     headers = ["V_mag", "proper_name", "bayer_designation", "distance", "spectral_class", "mass", "radius", "luminosity"]
     planet_data = []
     soup = BeautifulSoup(browser.page_source, "html.parser")
-    for ul_tag in soup.find_all("ul", attrs={"class", "exoplanet"}):
-        li_tags = ul_tag.find_all("li")
+    for td_tag in soup.find_all("td", attrs={"class", "exoplanet"}):
+        tl_tags = ul_tag.find_all("tl")
         temp_list = []
-        for index, li_tag in enumerate(li_tags):
+        for index, tl_tag in enumerate(li_tags):
             if index == 0:
-                temp_list.append(li_tag.find_all("a")[0].contents[0])
+                temp_list.append(tl_tag.find_all("a")[0].contents[0])
             else:
                 try:
                     temp_list.append(li_tag.contents[0])
